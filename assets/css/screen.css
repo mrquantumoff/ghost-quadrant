@@ -874,6 +874,16 @@ pre {
     background-image: none !important;
 }
 
+/* A full-bleed background image gets a #FFFFFF placeholder from Ghost core
+   (.kg-signup-card > picture > .kg-signup-card-image). When the image is
+   absent/broken that white fills the whole card on the dark page. Hide the
+   background image so the transparent card blends in. (Split-layout side
+   images live inside .kg-signup-card-content, so the child combinator leaves
+   them untouched.) */
+.gh-content .kg-signup-card > picture {
+    display: none !important;
+}
+
 .gh-content .kg-signup-card-heading,
 .gh-content .kg-signup-card-subheading {
     color: var(--color-slate-50) !important;
