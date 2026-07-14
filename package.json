@@ -1,6 +1,6 @@
 {
-    "name": "journal",
-    "description": "A Ghost theme",
+    "name": "ghost-quadrant",
+    "description": "A Ghost theme skinned to the Quadrant UI design system",
     "version": "1.0.0",
     "private": true,
     "engines": {

@@ -863,3 +863,36 @@ pre {
     border-radius: var(--radius-2xl);
     overflow: hidden;
 }
+
+/* Signup cards (Koenig) — force the Quadrant dark treatment. The editor sets
+   the card's background and text colors inline; a light background leaves the
+   default white heading/subheading invisible (white-on-white) and renders as a
+   blank white block on the dark page. !important is needed to beat those inline
+   styles and guarantee a legible, on-brand card whatever the editor settings. */
+.gh-content .kg-signup-card {
+    background-color: var(--color-slate-800) !important;
+    border-radius: var(--radius-2xl);
+}
+
+.gh-content .kg-signup-card-heading,
+.gh-content .kg-signup-card-subheading {
+    color: var(--color-slate-50) !important;
+}
+
+.gh-content .kg-signup-card-disclaimer {
+    color: var(--color-slate-400) !important;
+}
+
+.gh-content .kg-signup-card-input {
+    color: var(--color-slate-50) !important;
+    background-color: var(--color-slate-900) !important;
+    border-color: var(--color-slate-700) !important;
+    border-radius: 9999px !important;
+}
+
+.gh-content .kg-signup-card-button {
+    font-weight: 800;
+    color: var(--color-slate-50) !important;
+    background-color: var(--ghost-accent-color) !important;
+    border-radius: 9999px !important;
+}
