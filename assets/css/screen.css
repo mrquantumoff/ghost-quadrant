@@ -864,14 +864,14 @@ pre {
     overflow: hidden;
 }
 
-/* Signup cards (Koenig) — force the Quadrant dark treatment. The editor sets
-   the card's background and text colors inline; a light background leaves the
-   default white heading/subheading invisible (white-on-white) and renders as a
-   blank white block on the dark page. !important is needed to beat those inline
-   styles and guarantee a legible, on-brand card whatever the editor settings. */
+/* Signup cards (Koenig) — blend into the dark post instead of rendering as a
+   filled (often white) panel. The editor writes the card's background and text
+   colors inline, so these need !important. The background is dropped to
+   transparent so the card sits seamlessly on the page; the heading, input, and
+   button carry the Quadrant styling. */
 .gh-content .kg-signup-card {
-    background-color: var(--color-slate-800) !important;
-    border-radius: var(--radius-2xl);
+    background-color: transparent !important;
+    background-image: none !important;
 }
 
 .gh-content .kg-signup-card-heading,
@@ -885,7 +885,7 @@ pre {
 
 .gh-content .kg-signup-card-input {
     color: var(--color-slate-50) !important;
-    background-color: var(--color-slate-900) !important;
+    background-color: var(--color-slate-800) !important;
     border-color: var(--color-slate-700) !important;
     border-radius: 9999px !important;
 }
