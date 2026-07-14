@@ -1,11 +1,20 @@
-# Journal
+# Journal — Quadrant
 
-> [!IMPORTANT]
-> This repo is synced automatically with the [TryGhost/Themes](https://github.com/TryGhost/Themes) monorepo. If you're looking to contribute or raise an issue, head over to the main repository [TryGhost/Themes](https://github.com/TryGhost/Themes) where our official themes are developed.
+A minimal, typography-heavy newsletter theme for [Ghost](https://github.com/TryGhost/Ghost), skinned to the **Quadrant UI** design system.
 
-A minimal, typography-heavy newsletter theme for [Ghost](https://github.com/TryGhost/Ghost).
+Built on TryGhost's [Journal](https://github.com/TryGhost/Themes) theme, this variant reskins the theme to match Quadrant — the dark, slate-based design language of the [Quadrant](https://claude.ai/design/p/ff456d7a-1ec1-478b-b934-dd85a6b89139) modpack manager.
 
-**Demo: https://journal.ghost.io**
+## Design language
+
+- **Dark slate surfaces** — slate-900 page background, slate-800 cards and inputs, slate-50 / slate-400 text.
+- **Blue primary actions** — blue-600 fills (blue-400 for small accent text such as dates, tags, and links), emerald for positive actions, red for destructive.
+- **Pills everywhere** — buttons, inputs, and the subscribe card use fully rounded (`rounded-full` / `rounded-4xl`) corners.
+- **Inter typeface** — regular body text with **extrabold (800)** buttons.
+
+The design tokens live in `assets/css/screen.css` (`:root`), with hex values taken from the Quadrant design project's color reference. Ghost's admin-set accent color overrides the blue-600 fallback in production — set the site accent to `#155DFC` to keep Portal and emails on-palette.
+
+> [!NOTE]
+> Upstream Journal is developed in the [TryGhost/Themes](https://github.com/TryGhost/Themes) monorepo. This repo intentionally diverges from upstream to carry the Quadrant skin.
 
 # Instructions
 
@@ -31,6 +40,8 @@ The `zip` Gulp task packages the theme files into `dist/journal.zip`, which you 
 ```bash
 pnpm zip
 ```
+
+Remember to rebuild (`pnpm dev` or `gulp build`) so `assets/built/` stays in sync after editing source CSS/JS.
 
 ## Theme translations
 

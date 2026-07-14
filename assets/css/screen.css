@@ -2,11 +2,51 @@
 @import "fonts.css";
 
 :root {
+    /* Quadrant UI design tokens (quadrant-next, sRGB equivalents of the OKLCH source) */
+    --color-slate-50: #f8fafc;
+    --color-slate-200: #e2e8f0;
+    --color-slate-300: #cad5e2;
+    --color-slate-400: #90a1b9;
+    --color-slate-500: #62748e;
+    --color-slate-600: #45556c;
+    --color-slate-700: #314158;
+    --color-slate-800: #1d293d;
+    --color-slate-900: #0f172b;
+    --color-slate-950: #020618;
+    --color-blue-400: #50a2ff;
+    --color-blue-500: #2b7fff;
+    --color-blue-600: #155dfc;
+    --color-blue-700: #1447e6;
+    --color-emerald-600: #009966;
+    --color-emerald-700: #007a55;
+    --color-red-500: #fb2c36;
+    --color-red-700: #c10007;
+    --radius-2xl: 1rem;
+    --radius-4xl: 2rem;
+
     --font-sans: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif; /* stylelint-disable-line value-keyword-case */
     --font-serif: Lora, Times, serif; /* stylelint-disable-line value-keyword-case */
-    --color-primary-text: var(--color-black);
-    --color-darker-gray: var(--color-black);
+
+    /* Journal palette remapped to the Quadrant dark slate scheme.
+       --ghost-accent-color is a fallback only: the value injected by
+       ghost_head comes later in the document and wins in production. */
+    --ghost-accent-color: var(--color-blue-600);
+    --color-primary-text: var(--color-slate-50);
+    --color-secondary-text: var(--color-slate-400);
+    --color-white: var(--color-slate-900);
+    --color-lighter-gray: var(--color-slate-800);
+    --color-light-gray: var(--color-slate-700);
+    --color-mid-gray: var(--color-slate-600);
+    --color-dark-gray: var(--color-slate-300);
+    --color-darker-gray: var(--color-slate-50);
+    --color-black: var(--color-slate-50);
     --head-nav-gap: 3.2rem;
+
+    color-scheme: dark;
+}
+
+::selection {
+    background-color: rgb(43 127 255 / 0.4);
 }
 
 .tag-template .gh-main,
@@ -130,8 +170,8 @@
     padding-top: 1.4rem;
     padding-bottom: 1.4rem;
     margin-top: 8rem;
-    font-weight: 600;
-    color: var(--color-darker-gray);
+    font-weight: 800;
+    color: var(--color-slate-50);
     letter-spacing: -0.02em;
     background-color: transparent;
     border: 1px solid var(--color-light-gray);
@@ -338,9 +378,11 @@
 }
 
 .gh-subscribe {
-    padding: 7.2rem 0;
-    margin: 12rem 0 8rem;
-    background-color: var(--ghost-accent-color);
+    width: min(1200px, calc(100% - 2 * var(--gap)));
+    padding: 7.2rem var(--gap);
+    margin: 12rem auto 8rem;
+    background-color: var(--color-slate-800);
+    border-radius: var(--radius-4xl);
 }
 
 .gh-subscribe-inner {
@@ -351,8 +393,8 @@
 
 .gh-subscribe-title {
     font-size: 3.6rem;
-    font-weight: 700;
-    color: #fff;
+    font-weight: 800;
+    color: var(--color-slate-50);
 }
 
 .has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-subscribe-title {
@@ -364,7 +406,7 @@
     margin-top: 2rem;
     font-size: 1.9rem;
     line-height: 1.4;
-    color: #fff;
+    color: var(--color-slate-300);
 }
 
 .gh-subscribe-input {
@@ -374,21 +416,22 @@
     width: 100%;
     max-width: 440px;
     height: 56px;
-    padding: 0 1.6rem;
+    padding: 0 2rem;
     margin: 4.8rem auto 0.8rem;
     font-size: 1.6rem;
-    color: var(--color-secondary-text);
-    background-color: var(--color-white);
-    border: 1px solid var(--color-light-gray);
-    border-radius: 6px;
+    color: var(--color-slate-400);
+    background-color: var(--color-slate-800);
+    border: 1px solid var(--color-slate-700);
+    border-radius: 9999px;
 }
 
 .gh-subscribe .gh-subscribe-input {
+    background-color: var(--color-slate-700);
     border: 0;
 }
 
 .gh-subscribe-input:hover {
-    border-color: var(--color-mid-gray);
+    border-color: var(--color-slate-500);
     opacity: 1;
 }
 
@@ -405,16 +448,16 @@
 
 .gh-subscribe-input-btn {
     font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--ghost-accent-color);
+    font-weight: 800;
+    color: var(--color-blue-400);
     text-transform: uppercase;
     letter-spacing: 0.01em;
 }
 
 .gh-subscribe-btn {
     margin-top: 3.2rem;
-    color: var(--ghost-accent-color);
-    background-color: #fff;
+    color: var(--color-slate-50);
+    background-color: var(--ghost-accent-color);
 }
 
 .gh-article:not(.no-image) .gh-article-header > * {
@@ -445,7 +488,7 @@
     margin-top: 1.6rem;
     font-size: 2.8rem;
     line-height: 1.35;
-    color: var(--color-darker-gray);
+    color: var(--color-slate-300);
 }
 
 .gh-article-footer {
@@ -672,4 +715,151 @@
         position: relative;
         top: 1px;
     }
+}
+
+/* Quadrant UI skin
+/* ----------------------------------------------------------
+/* Overrides that fit the shared theme components to the
+/* Quadrant design system: dark slate surfaces, pill-shaped
+/* extrabold buttons, blue primary actions, rounded cards. */
+
+.gh-btn {
+    font-weight: 800;
+    color: var(--color-slate-50);
+    background-color: var(--color-slate-800);
+}
+
+.gh-head-btn.gh-btn {
+    font-weight: 800;
+}
+
+.gh-btn:hover {
+    background-color: var(--color-slate-700);
+    opacity: 1;
+}
+
+.gh-primary-btn {
+    background-color: var(--ghost-accent-color);
+}
+
+.gh-primary-btn:hover {
+    background-color: var(--ghost-accent-color);
+    filter: brightness(0.9);
+}
+
+.gh-outline-btn,
+.gh-loadmore {
+    background-color: transparent;
+}
+
+.gh-outline-btn:hover,
+.gh-loadmore:hover {
+    background-color: transparent;
+}
+
+/* Accent-colored text: the blue-600 fill color is too dim for small text
+   on slate-900, so text accents step up to blue-400 (fills stay accent). */
+.gh-card-date,
+.gh-tag-label,
+.gh-content a,
+:not(pre) > code {
+    color: var(--color-blue-400);
+}
+
+.gh-dropdown {
+    background-color: var(--color-slate-800);
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 0 0 1px rgb(248 250 252 / 0.06), 0 7px 20px -5px rgb(2 6 24 / 0.6);
+}
+
+.gh-dropdown li a {
+    color: var(--color-slate-50) !important;
+}
+
+.gh-button-share {
+    color: rgb(248 250 252 / 0.85);
+    border-color: rgb(248 250 252 / 0.15);
+}
+
+.gh-button-share:hover {
+    border-color: rgb(248 250 252 / 0.5);
+}
+
+.gh-cta-gradient {
+    background: linear-gradient(180deg, rgb(15 23 43 / 0), var(--color-slate-900));
+}
+
+pre {
+    border-radius: var(--radius-2xl);
+}
+
+.gh-article-image img {
+    border-radius: var(--radius-4xl);
+}
+
+.gh-content :is(.kg-image-card:not(.kg-width-full) .kg-image, .kg-gallery-image img, .kg-video-container) {
+    border-radius: var(--radius-2xl);
+}
+
+.gh-content .kg-video-container {
+    overflow: hidden;
+}
+
+.gh-content .kg-btn {
+    font-weight: 800;
+    border-radius: 9999px;
+}
+
+.gh-content table:not(.gist table) {
+    background: radial-gradient(ellipse at left, rgb(2 6 24 / 0.5) 0%, rgb(2 6 24 / 0) 75%) 0 center, radial-gradient(ellipse at right, rgb(2 6 24 / 0.5) 0%, rgb(2 6 24 / 0) 75%) 100% center;
+    background-repeat: no-repeat;
+    background-attachment: scroll, scroll;
+    background-size: 10px 100%, 10px 100%;
+}
+
+.gh-content table:not(.gist table) td:first-child {
+    background-image: linear-gradient(to right, rgb(15 23 43 / 1) 50%, rgb(15 23 43 / 0) 100%);
+}
+
+.gh-content table:not(.gist table) td:last-child {
+    background-image: linear-gradient(to left, rgb(15 23 43 / 1) 50%, rgb(15 23 43 / 0) 100%);
+}
+
+.kg-callout-card {
+    border-radius: var(--radius-2xl);
+}
+
+.kg-callout-card-grey,
+.kg-callout-card-white {
+    background-color: var(--color-slate-800);
+}
+
+.kg-callout-card-blue {
+    background-color: rgb(43 127 255 / 0.16);
+}
+
+.kg-callout-card-green {
+    background-color: rgb(0 153 102 / 0.16);
+}
+
+.kg-callout-card-yellow {
+    background-color: rgb(253 199 0 / 0.14);
+}
+
+.kg-callout-card-red {
+    background-color: rgb(251 44 54 / 0.14);
+}
+
+.kg-callout-card-pink {
+    background-color: rgb(255 100 103 / 0.14);
+}
+
+.kg-callout-card-purple {
+    background-color: rgb(97 95 255 / 0.16);
+}
+
+.kg-bookmark-container,
+.kg-toggle-card {
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
 }
